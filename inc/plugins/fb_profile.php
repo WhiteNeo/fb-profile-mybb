@@ -1,11 +1,11 @@
 <?php
 
 /**
-*@ Autor: DNT (Dark Neo - Programing and desingn, Iñaki, Ocras - stilization and customization )
-*@ Fecha: 2013-05-25
-*@ Version: 1.0
-*@ Contacto: neogeoman@gmail.es
-*@ Web: http://darkneo.skn1.com (temporally)
+*@ Autor: Dark Neo
+*@ Fecha: 2016-05-11
+*@ Version: 1.2
+*@ Contacto: neogeoman@gmail.com
+*@ Web: http://soportemybb.es
 */
 
 // Inhabilitar acceso directo a este archivo
@@ -35,21 +35,18 @@ function fb_profile_info()
 
 	if (count($db->fetch_array($query)))
 	{
-		//$fb_profile_config = '(<a href="index.php?module=config&action=change&search=fb_profile" style="color:#035488;">'.$db->escape_string($lang->fb_profile_config).'</a>)';
 		$fb_profile_config = '(<a href="index.php?module=config&action=change&search=fb_profile" style="color:#035488;">Configurar Plugin</a>)';
 	}
 
 	return array(
-     // "name"			=> $db->escape_string($lang->fb_profile_name),
-    //	"description"	=> $db->escape_string($lang->fb_profile_descrip) . "  " . $fb_profile_config,
         "name"			=> "Perfil tipo facebook",
     	"description"	=> "Agrega la funcionalidad de colocar una imagen de biografia y datos nuevos tipo faceboook en los perfiles de usuario",
-	    "website"		=> "http://www.soportemybb.com.",
-		"author"		=> "<a href='http://darkneo.skn1.com'>DNT</a>",
-		"authorsite"	=> "http://darkneo.skn1.com",
-		"version"		=> "1.0",
-		"guid" 			=> "",
-		"compatibility" => "16*"
+	    "website"		=> "http://www.soportemybb.es",
+		"author"		=> "Dark Neo",
+		"authorsite"	=> "http://www.soportemybb.es",
+		"version"		=> "1.2",
+		"codename" 			=> "fb_profile",
+		"compatibility" => "18*"
 	);
 }
 
@@ -342,7 +339,7 @@ $youtube = array(
 		"template"	=> $db->escape_string('<table border="0" cellspacing="{$theme[\'borderwidth\']}" cellpadding="{$theme[\'tablespace\']}" class="tborder" width="450">
 <tr>
 <td class="thead">
-<div class="expcolimage"><img src="{$theme[\'imgdir\']}/collapse{$collapsedimg[\'boardstats\']}.gif" id="youtube_1_img" class="expander" alt="[-]" title="[-]" /></div>
+<div class="expcolimage"><img src="{$theme[\'imgdir\']}/collapse{$collapsedimg[\'boardstats\']}.png" id="youtube_1_img" class="expander" alt="[-]" title="[-]" /></div>
 <div class="strong">Video de Youtube</div>
 </td>
 </tr>
@@ -361,7 +358,7 @@ $youtube_none = array(
 		"template"	=> $db->escape_string('<table border="0" cellspacing="{$theme[\'borderwidth\']}" cellpadding="{$theme[\'tablespace\']}" class="tborder" width="450">
 <tr>
 <td class="thead">
-<div class="expcolimage"><img src="{$theme[\'imgdir\']}/collapse{$collapsedimg[\'boardstats\']}.gif" id="youtube_1_img" class="expander" alt="[-]" title="[-]" /></div>
+<div class="expcolimage"><img src="{$theme[\'imgdir\']}/collapse{$collapsedimg[\'boardstats\']}.png" id="youtube_1_img" class="expander" alt="[-]" title="[-]" /></div>
 <div class="strong">Video de Youtube</div>
 </td>
 </tr>
@@ -437,7 +434,7 @@ function facebook_profile(){
 			while($buddy = $db->fetch_array($query))
 			{
 			      if($buddy['avatar'] == ''){
-				  $buddy['avatar'] = 'images/default_avatar.gif';
+				  $buddy['avatar'] = 'images/default_avatar.png';
 				  }
 				  $fb_profile['uid'] = (int)$buddy['uid'];
 				  $fb_profile['avatar'] = htmlspecialchars_uni($buddy['avatar']);
@@ -516,7 +513,7 @@ $fb_biography_field ='<br />
 <legend><strong>Imagen de la Biograf&iacute;a</strong></legend>
 <table cellspacing="0" cellpadding="{$theme[\'tablespace\']}">
 <tr>
-Ingresa la URL de la imagen para tu biograf&iacute;a:<br /><b>Ej. http://www.darkneo.xunem.com/images/biografia.png</b><br />
+Ingresa la URL de la imagen para tu biograf&iacute;a:<br /><b>Ej. '.$mybb->settings['bburl'].'/images/biografia.png</b><br />
 <input type="text" class="textbox" name="biography" size="50" value="'.$fb_data['biography'].'" />
 </tr>
 </table>
